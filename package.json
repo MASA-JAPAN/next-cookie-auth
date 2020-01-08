@@ -1,0 +1,30 @@
+{
+  "name": "next-cookie-auth",
+  "version": "1.0.0",
+  "description": "Cookie authentication with Next.js",
+  "main": " server.js",
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MASA-JAPAN/next-cookie-auth.git"
+  },
+  "author": "MASA-JAPAN",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MASA-JAPAN/next-cookie-auth/issues"
+  },
+  "homepage": "https://github.com/MASA-JAPAN/next-cookie-auth#readme",
+  "dependencies": {
+    "axios": "^0.19.1",
+    "cookie-parser": "^1.4.4",
+    "express": "^4.17.1",
+    "next": "^9.1.7",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
