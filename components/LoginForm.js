@@ -5,6 +5,8 @@ import Router from "next/router";
 export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = event => {
     switch (event.target.name) {
@@ -23,11 +25,21 @@ export default function LoginForm() {
     }
   };
 
+  const showError = err => {
+    console.error(err);
+    const error = (err.response && err.response.data) || err.message;
+    setError(error);
+    setIsLoading(false);
+  };
+
   const handleSubmit = event => {
+    setIsLoading(true);
     event.preventDefault();
-    loginUser(email, password).then(() => {
-      Router.push("/profile");
-    });
+    loginUser(email, password)
+      .then(() => {
+        Router.push("/profile");
+      })
+      .catch(showError);
   };
 
   return (
@@ -48,7 +60,10 @@ export default function LoginForm() {
           onChange={handleChange}
         />
       </div>
-      <button type="submit">Submit</button>
+      <button disabled={isLoading} type="submit">
+        {isLoading ? "Sending" : "Submit"}
+      </button>
+      {error && <div>{error}</div>}
     </form>
   );
 }
